@@ -26,28 +26,26 @@ Execute Django admin and create details for 10 books
 models.py
 '''
 
-
 from django.db import models
-from django.contrib import admin
 
 # Create your models here.
-class Employee(models.Model):
-    emp_id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=50)
-    desig = models.CharField(max_length=50)
-    salary = models.IntegerField()
-    doj = models.DateField()
-
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ('emp_id','name','desig','salary','doj')
+class Car(models.Model):
+    car_id = models.IntegerField(primary_key=True)
+    brand = models.CharField(max_length=20)
+    model = models.CharField(max_length=20)
+    year = models.DateField()
+    price = models.IntegerField()
 '''
 Admin.py
 '''
 from django.contrib import admin
-from . models import Employee, EmployeeAdmin
-
+from . models import Car
 # Register your models here.
-admin.site.register(Employee, EmployeeAdmin)
+
+admin.site.register(Car)
+
+class CarAdmin(admin.ModelAdmin):
+    list_display = ('car_id','brand','model','year','price')
 
 '''
 
